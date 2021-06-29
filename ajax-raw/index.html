@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COASTERS RAW AJAX</title>
+</head>
+
+<body>
+
+
+    <h1>Montañas rusas de Germán!</h1>
+
+    <ul>
+
+    </ul>
+
+    <script>
+
+        fetch('https://coasters-api.herokuapp.com/')
+            .then(response => response.json())
+            .then(data => {
+
+                console.log('Las montañassss', data)
+
+                let text = ''
+
+                data.forEach(elm => text += `<li>${elm.name}: longitud ${elm.length} metros, altura ${elm.height} metros</li>`)
+
+                document.querySelector('ul').innerHTML = text
+            })
+            .catch(err => console.log('Sucedió un error...', err))
+
+    </script>
+</body>
+
+</html>
